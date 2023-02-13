@@ -34,7 +34,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:fontFamily="@font/worksansitalic"
-            android:text="Name: "
+            android:text="@string/nameQ"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
@@ -64,7 +64,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:fontFamily="@font/worksansitalic"
-            android:text="Weight: "
+            android:text="@string/weightQ"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
@@ -96,7 +96,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:fontFamily="@font/worksansitalic"
-            android:text="Age: "
+            android:text="@string/ageQ"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
@@ -107,7 +107,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:fontFamily="@font/worksansnormal"
-            android:text="22"
+            android:text="@string/example_age"
             android:textAlignment="viewEnd"
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -126,7 +126,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:fontFamily="@font/worksansitalic"
-            android:text="E-mail: "
+            android:text="@string/emailQ"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
@@ -138,7 +138,7 @@
             android:layout_weight="1"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/worksansnormal"
-            android:text="johndoe@tamu.edu"
+            android:text="@string/example_email"
             android:textAlignment="viewEnd"
             android:textColor="@color/black" />
     </LinearLayout>
@@ -156,7 +156,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:fontFamily="@font/worksansitalic"
-            android:text="Gender: "
+            android:text="@string/genderQ"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
@@ -180,7 +180,7 @@
         android:layout_height="100dp"
         android:backgroundTint="@android:color/black"
         android:fontFamily="@font/worksansnormal"
-        android:text="Today's Meals"
+        android:text="@string/today_meals"
         android:textSize="30sp" />
 
 </LinearLayout>

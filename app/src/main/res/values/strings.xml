@@ -9,4 +9,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="nameQ">Name: </string>
+    <string name="ageQ">Age: </string>
+    <string name="weightQ">Weight: </string>
+    <string name="emailQ">E-mail: </string>
+    <string name="genderQ">Gender: </string>
+    <string name="today_meals">Today\'s Meals</string>
+    <string name="example_email">johndoe@tamu.edu</string>
+    <string name="example_age">22</string>
 </resources>
