@@ -33,14 +33,16 @@ public class BarChartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bar_chart);
         BarChart barChart = findViewById(R.id.barchart);
         getData();
-        BarDataSet barDataSet = new BarDataSet(barArrayList, "Fats, Carbs, Proteins, consumed vs goals.");
-        BarData barData = new BarData(barDataSet);
+        BarDataSet barGoalDataSet = new BarDataSet(barArrayList, "Fats, Carbs, Proteins, consumed vs goals.");
+        BarData barData = new BarData(barGoalDataSet);
         barChart.setData(barData);
-        barDataSet.setColors(ColorTemplate.PASTEL_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
+        barGoalDataSet.setColors(Color.rgb(255, 255, 255), Color.rgb(0, 0, 255),
+                Color.rgb(255, 255, 255), Color.rgb(0, 0, 255),
+                Color.rgb(255, 255, 255), Color.rgb(0, 0, 255));
+        barGoalDataSet.setValueTextColor(Color.BLACK);
+        barGoalDataSet.setValueTextSize(16f);
         barChart.getDescription().setEnabled(false);
-
+        barChart.animateY(1400);
     }
 
 
@@ -48,10 +50,10 @@ public class BarChartActivity extends AppCompatActivity {
     private void getData(){
         barArrayList = new ArrayList();
         barArrayList.add(new BarEntry(2f, fat_percentage));
+        barArrayList.add(new BarEntry(2f, 10));
         barArrayList.add(new BarEntry(4f, carbs_percentage));
+        barArrayList.add(new BarEntry(4f, 44));
         barArrayList.add(new BarEntry(6f, protein_percentage));
         barArrayList.add(new BarEntry(6f, 32));
-        barArrayList.add(new BarEntry(2f, 10));
-        barArrayList.add(new BarEntry(4f, 44));
     }
 }
