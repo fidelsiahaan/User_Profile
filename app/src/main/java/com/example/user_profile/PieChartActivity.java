@@ -79,7 +79,7 @@ public class PieChartActivity extends AppCompatActivity {
 
 
         ArrayList<Integer> colors = new ArrayList<>();
-        for (int color: ColorTemplate.VORDIPLOM_COLORS) {
+        for (int color: ColorTemplate.PASTEL_COLORS) {
             colors.add(color);
         }
 
