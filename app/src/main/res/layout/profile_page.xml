@@ -11,14 +11,13 @@
     android:paddingRight="16dp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profilePicture"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePicture"
         app:srcCompat="@drawable/profilepic" />
 
     <LinearLayout
@@ -34,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserratitalic"
+            android:fontFamily="@font/worksansitalic"
             android:text="Name: "
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -45,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserratnormal"
+            android:fontFamily="@font/worksansnormal"
             android:text="John Doe"
             android:textAlignment="viewEnd"
             android:textColor="@color/black"
@@ -64,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserratitalic"
+            android:fontFamily="@font/worksansitalic"
             android:text="Weight: "
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -75,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserratnormal"
+            android:fontFamily="@font/worksansnormal"
             android:text="120 lbs"
             android:textAlignment="viewEnd"
             android:textColor="@color/black"
@@ -96,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserratitalic"
+            android:fontFamily="@font/worksansitalic"
             android:text="Age: "
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -107,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserratnormal"
+            android:fontFamily="@font/worksansnormal"
             android:text="22"
             android:textAlignment="viewEnd"
             android:textColor="@color/black"
@@ -126,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserratitalic"
+            android:fontFamily="@font/worksansitalic"
             android:text="E-mail: "
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -138,7 +137,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:autoSizeTextType="uniform"
-            android:fontFamily="@font/montserratnormal"
+            android:fontFamily="@font/worksansnormal"
             android:text="johndoe@tamu.edu"
             android:textAlignment="viewEnd"
             android:textColor="@color/black" />
@@ -156,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserratitalic"
+            android:fontFamily="@font/worksansitalic"
             android:text="Gender: "
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -168,7 +167,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:autoSizeTextType="uniform"
-            android:fontFamily="@font/montserratnormal"
+            android:fontFamily="@font/worksansnormal"
             android:text="Male"
             android:textAlignment="viewEnd"
             android:textColor="@color/black"
@@ -180,7 +179,7 @@
         android:layout_width="380dp"
         android:layout_height="100dp"
         android:backgroundTint="@android:color/black"
-
+        android:fontFamily="@font/worksansnormal"
         android:text="Today's Meals"
         android:textSize="30sp" />
 

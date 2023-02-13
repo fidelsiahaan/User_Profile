@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         dinnerCaloriesValue = (TextView) findViewById(R.id.dinnerCalories);
 
 
+
+
         breakfastButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

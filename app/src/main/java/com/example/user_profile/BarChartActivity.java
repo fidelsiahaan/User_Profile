@@ -2,6 +2,7 @@ package com.example.user_profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -39,13 +40,17 @@ public class BarChartActivity extends AppCompatActivity {
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(16f);
         barChart.getDescription().setEnabled(false);
+
     }
+
+
+
     private void getData(){
         barArrayList = new ArrayList();
         barArrayList.add(new BarEntry(2f, fat_percentage));
         barArrayList.add(new BarEntry(4f, carbs_percentage));
         barArrayList.add(new BarEntry(6f, protein_percentage));
-        barArrayList.add(new BarEntry(6f, 36));
+        barArrayList.add(new BarEntry(6f, 32));
         barArrayList.add(new BarEntry(2f, 10));
         barArrayList.add(new BarEntry(4f, 44));
     }

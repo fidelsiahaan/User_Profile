@@ -8,20 +8,6 @@
     android:background="@drawable/gradient">
 
 
-    <Button
-        android:id="@+id/lunch_button"
-        android:layout_width="373dp"
-        android:layout_height="71dp"
-        android:backgroundTint="@android:color/black"
-
-        android:text="Meal Two"
-        android:textSize="29sp"
-        app:layout_constraintBottom_toTopOf="@+id/dinner_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/breakfast_button"
-        app:layout_constraintVertical_bias="0.479" />
 
     <Button
         android:id="@+id/breakfast_button"
@@ -30,37 +16,51 @@
         android:backgroundTint="@android:color/black"
         android:text="Meal One"
         android:textSize="29sp"
-        app:layout_constraintBottom_toTopOf="@+id/dinner_button"
+        app:layout_constraintBottom_toTopOf="@+id/data1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+        android:fontFamily="@font/worksansnormal"/>
+
+    <Button
+        android:id="@+id/lunch_button"
+        android:layout_width="373dp"
+        android:layout_height="71dp"
+        android:backgroundTint="@android:color/black"
+        android:text="Meal Two"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/data3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data1"
+        app:layout_constraintVertical_bias="0.421"
+        android:fontFamily="@font/worksansnormal"/>
 
     <Button
         android:id="@+id/dinner_button"
         android:layout_width="373dp"
         android:layout_height="71dp"
-
-        android:layout_marginBottom="244dp"
         android:backgroundTint="@android:color/black"
         android:text="Meal Three"
         android:textSize="29sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/data2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.368"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data3"
+        android:fontFamily="@font/worksansnormal"/>
 
     <Button
         android:id="@+id/goal_display_button"
         android:layout_width="169dp"
         android:layout_height="100dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@android:color/black"
-        android:text="Goal display"
+        android:text="Today's Progress"
         android:textSize="18sp"
-
+        android:fontFamily="@font/worksansnormal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/caloric_breakdown_button"
         app:layout_constraintStart_toStartOf="parent" />
@@ -70,16 +70,16 @@
         android:layout_width="169dp"
         android:layout_height="100dp"
         android:layout_marginStart="12dp"
-        android:layout_marginBottom="16dp"
         android:backgroundTint="@android:color/black"
         android:text="Caloric Breakdown"
         android:textSize="18sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/worksansnormal"
+        app:layout_constraintBottom_toBottomOf="@id/goal_display_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/goal_display_button" />
 
     <LinearLayout
+        android:id="@+id/data1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Calories :   "
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
@@ -106,10 +106,10 @@
 
             <TextView
                 android:id="@+id/breakfastCalories"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="666"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
@@ -128,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Caloric Breakdown:   "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -140,14 +140,15 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingTop="15dp"
-            android:paddingRight="20dp">
+            android:paddingRight="20dp"
+            app:layout_constraintBottom_toTopOf="@id/lunch_button">
 
             <TextView
                 android:id="@+id/breakfastFatText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Fat: "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -158,18 +159,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="298"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/breakfastCarbsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Carbs:"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -180,7 +181,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="133"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -191,7 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Protein: "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -202,7 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="235"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -211,6 +212,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/data2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -230,7 +232,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Calories :   "
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
@@ -238,14 +240,14 @@
 
             <TextView
                 android:id="@+id/dinnerCalories"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="729"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -260,7 +262,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Caloric Breakdown:   "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -279,7 +281,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Fat: "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -290,18 +292,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="131"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/dinnerCarbsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Carbs:"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -312,7 +314,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="474"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -323,7 +325,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Protein: "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -334,7 +336,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="124"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -342,6 +344,7 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/data3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -360,7 +363,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Calories :   "
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
@@ -368,10 +371,10 @@
 
             <TextView
                 android:id="@+id/lunchCalories"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="519"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
@@ -390,7 +393,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Caloric Breakdown:   "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -409,7 +412,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Fat: "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -420,7 +423,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="103"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -431,7 +434,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Carbs:"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -442,7 +445,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="352"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -453,7 +456,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratitalic"
+                android:fontFamily="@font/worksansitalic"
                 android:text="Protein: "
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -464,7 +467,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserratnormal"
+                android:fontFamily="@font/worksansnormal"
                 android:text="64"
                 android:textAlignment="center"
                 android:textColor="@color/black"
