@@ -20,14 +20,13 @@
         android:id="@+id/table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:stretchColumns="2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/activity_main_piechart">
 
-        <TableRow
-            android:background="@color/white">
+        <TableRow>
             <TextView
                 android:padding="3dip" />
             <TextView
@@ -37,6 +36,7 @@
                 android:gravity="center"
                 android:padding="3dip"
                 android:text="Total"
+                android:background="@color/white"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
@@ -44,6 +44,7 @@
                 android:gravity="center"
                 android:padding="3dip"
                 android:text="Goal"
+                android:background="@color/white"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
@@ -53,7 +54,7 @@
 
             <TextView
                 android:padding="3dip"
-                android:text="Carbohydrates "
+                android:text="Carbohydrates"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -67,7 +68,7 @@
                 android:textSize="20sp"/>
             <TextView
                 android:padding="3dip"
-                android:text="50.1 %"
+                android:text="50.1%"
                 android:gravity="center"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
@@ -75,7 +76,7 @@
 
             <TextView
                 android:padding="3dip"
-                android:text="40 %"
+                android:text="40%"
                 android:gravity="center"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
@@ -85,7 +86,7 @@
 
             <TextView
                 android:padding="3dip"
-                android:text="Protein "
+                android:text="Protein"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -99,7 +100,7 @@
                 android:textSize="20sp"/>
             <TextView
                 android:padding="3dip"
-                android:text="22.1 %"
+                android:text="22.1%"
                 android:gravity="center"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
@@ -107,7 +108,7 @@
 
             <TextView
                 android:padding="3dip"
-                android:text="30 %"
+                android:text="30%"
                 android:gravity="center"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
@@ -117,7 +118,7 @@
 
             <TextView
                 android:padding="3dip"
-                android:text="Fat "
+                android:text="Fat"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -131,7 +132,7 @@
                 android:textSize="20sp"/>
             <TextView
                 android:padding="3dip"
-                android:text="27.8 %"
+                android:text="27.8%"
                 android:gravity="center"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
@@ -139,11 +140,11 @@
 
             <TextView
                 android:padding="3dip"
-                android:text="30 %"
+                android:text="30%"
                 android:gravity="center"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
-                android:textSize="12sp"/>
+                android:textSize="20sp"/>
         </TableRow>
     </TableLayout>
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 
 import com.github.mikephil.charting.animation.Easing;
 
@@ -19,9 +20,9 @@ import java.util.ArrayList;
 public class BarChartActivity extends AppCompatActivity {
 
     ArrayList barArrayList;
-    float carb_calories = 1000;
-    float fat_calories = 450;
-    float protein_calories = 450;
+    float carb_calories = 959;
+    float fat_calories = 423;
+    float protein_calories = 532;
     float total_calories = (carb_calories + fat_calories + protein_calories);
     float carbs_percentage = (carb_calories/total_calories) * 100;
     float protein_percentage = (protein_calories/total_calories) * 100;
@@ -43,6 +44,7 @@ public class BarChartActivity extends AppCompatActivity {
         barGoalDataSet.setValueTextSize(16f);
         barChart.getDescription().setEnabled(false);
         barChart.animateY(1400);
+        barChart.getXAxis().setDrawGridLines(false);
     }
 
 
@@ -54,6 +56,7 @@ public class BarChartActivity extends AppCompatActivity {
         barArrayList.add(new BarEntry(4f, carbs_percentage));
         barArrayList.add(new BarEntry(4f, 44));
         barArrayList.add(new BarEntry(6f, protein_percentage));
-        barArrayList.add(new BarEntry(6f, 32));
+        barArrayList.add(new BarEntry(6f, 20));
+
     }
 }
