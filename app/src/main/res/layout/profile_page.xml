@@ -32,18 +32,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:layout_weight="1"
+
             android:fontFamily="@font/worksansitalic"
             android:text="@string/nameQ"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/firstNameValue"
+            android:id="@+id/nameValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:layout_weight="1"
+
             android:fontFamily="@font/worksansnormal"
             android:text="@string/example_name"
             android:textAlignment="viewEnd"
