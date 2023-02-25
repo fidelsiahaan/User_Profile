@@ -9,180 +9,263 @@
     android:paddingLeft="16dp"
     android:paddingTop="50dp"
     android:paddingRight="16dp">
-
-    <ImageView
-        android:id="@+id/profilePicture"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        app:layout_constraintBottom_toTopOf="@+id/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/profilepic" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-
-        <TextView
-            android:id="@+id/name"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:orientation="vertical"
+            tools:ignore="Orientation">
+            <ImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                app:layout_constraintBottom_toTopOf="@+id/name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/profilepic" />
 
-            android:fontFamily="@font/worksansitalic"
-            android:text="@string/nameQ"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/worksansitalic"
+                    android:text="@string/nameQ"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/nameValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+                <TextView
+                    android:id="@+id/nameValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="@string/example_name"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-            android:fontFamily="@font/worksansnormal"
-            android:text="@string/example_name"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+                <TextView
+                    android:id="@+id/weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/worksansitalic"
+                    android:text="@string/weightQ"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/worksansitalic"
-            android:text="@string/weightQ"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/weightValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="120"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/weightValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/worksansnormal"
-            android:text="120 lbs"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/weightUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text=" lbs"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/worksansitalic"
+                    android:text="Height:"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/heightFeetValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="5"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/heightFeetUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="' "
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/heightInValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="9"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/heightInUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="&quot;"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
-        <TextView
-            android:id="@+id/age"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/worksansitalic"
-            android:text="@string/ageQ"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/worksansitalic"
+                    android:text="@string/ageQ"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/ageValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/worksansnormal"
-            android:text="@string/example_age"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/ageValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="@string/example_age"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/worksansitalic"
-            android:text="@string/emailQ"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/worksansitalic"
+                    android:text="@string/emailQ"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/emailValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:autoSizeTextType="uniform"
-            android:fontFamily="@font/worksansnormal"
-            android:text="@string/example_email"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/black" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/emailValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="@string/example_email"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
-        <TextView
-            android:id="@+id/gender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/worksansitalic"
-            android:text="@string/genderQ"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/worksansitalic"
+                    android:text="@string/genderQ"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/genderValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:autoSizeTextType="uniform"
-            android:fontFamily="@font/worksansnormal"
-            android:text="Male"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/black"
-            android:textSize="25sp"/>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/genderValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/worksansnormal"
+                    android:text="Male"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"/>
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/userSummaryButton"
-        android:layout_width="380dp"
-        android:layout_height="100dp"
-        android:backgroundTint="@android:color/black"
-        android:fontFamily="@font/worksansnormal"
-        android:text="@string/today_meals"
-        android:textSize="30sp" />
-
+            <Button
+                android:id="@+id/userSummaryButton"
+                android:layout_width="380dp"
+                android:layout_height="100dp"
+                android:backgroundTint="@android:color/black"
+                android:fontFamily="@font/worksansnormal"
+                android:text="@string/today_meals"
+                android:textSize="30sp" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
 
