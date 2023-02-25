@@ -64,8 +64,8 @@ public class ProfilePage extends AppCompatActivity{
         getdataNum(ageRef, age);
         getdata(emailRef, email);
         getdata(genderRef, gender);
-        getdataNum(heightFtRef, gender);
-        getdataNum(heightInRef, gender);
+        getdataNum(heightFtRef, heightft);
+        getdataNum(heightInRef, heightin);
 
 
         userSummaryButton = (Button) findViewById(R.id.userSummaryButton);
@@ -104,9 +104,6 @@ public class ProfilePage extends AppCompatActivity{
             }
         });
     }
-
-
-
 
 
     public void openSummary(){
