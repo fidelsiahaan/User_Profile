@@ -14,4 +14,5 @@
     <color name="start_color">#0575E6</color>
     <color name="center_color">#6DD5FA</color>
     <color name="end_color">#00F260</color>
+    <color name="transparent_blue">#AA6DD5FA</color>
 </resources>

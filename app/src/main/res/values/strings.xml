@@ -16,6 +16,6 @@
     <string name="genderQ">Gender: </string>
     <string name="today_meals">Today\'s Meals</string>
     <string name="example_email">johndoe@tamu.edu</string>
-    <string name="example_age">22</string>
-    <string name="example_name">John Doe</string>
+    <string name="example_age">0</string>
+    <string name="example_name">First Last</string>
 </resources>

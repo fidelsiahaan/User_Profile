@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background_for_recipe"
+    android:layout_height="150dp"
+    android:padding="16dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    >
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/recipe_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:strokeColor="@color/white"
+        app:strokeWidth="7dp"
+        app:shapeAppearanceOverlay="@style/RoundedSquare"
+        android:src="@drawable/recipe_a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtRecipeName"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/worksansnormal"
+        android:text="Recipe Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/recipe_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/simpleInstr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/simpleIngre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/ProteinTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Proteins:"
+        android:layout_marginStart="10dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/recipe_image"
+        app:layout_constraintTop_toBottomOf="@+id/txtRecipeName"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/theProteins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="# of Prots"
+        android:layout_marginStart="5dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/ProteinTxt"
+        app:layout_constraintTop_toBottomOf="@+id/txtRecipeName"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/CalsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total:"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/recipe_image"
+        app:layout_constraintTop_toBottomOf="@+id/FatsTxt"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/theCals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/CalsTxt"
+        app:layout_constraintTop_toBottomOf="@+id/theFats"
+        android:text="# of Cals"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="205dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <TextView
+        android:id="@+id/CarbsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carbs:"
+        android:layout_marginStart="10dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/recipe_image"
+        app:layout_constraintTop_toBottomOf="@+id/ProteinTxt"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/theCarbs"
+        android:text="# of Carbs"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="5dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/CarbsTxt"
+        app:layout_constraintTop_toBottomOf="@+id/theProteins"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/theFats"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="# of Fats"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/FatsTxt"
+        app:layout_constraintTop_toBottomOf="@+id/theCarbs"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/FatsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fats:"
+        android:layout_marginStart="10dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/recipe_image"
+        app:layout_constraintTop_toBottomOf="@+id/CarbsTxt"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/theID"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints"/>
+
+    <!--This is the Favorite Button-->
+    <ImageView
+        android:id="@+id/LikeCheckBox"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/ic_favorite_blue_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRecipeName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

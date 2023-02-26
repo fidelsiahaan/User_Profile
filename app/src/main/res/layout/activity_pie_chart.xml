@@ -76,7 +76,7 @@
 
             <TextView
                 android:padding="3dip"
-                android:text="40%"
+                android:text="50%"
                 android:gravity="center"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"
@@ -140,7 +140,7 @@
 
             <TextView
                 android:padding="3dip"
-                android:text="30%"
+                android:text="20%"
                 android:gravity="center"
                 android:fontFamily="@font/worksansnormal"
                 android:textColor="@color/black"

@@ -20,17 +20,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 public class ProfilePage extends AppCompatActivity{
 
 
     private Button userSummaryButton;
     private TextView name, weight, age, email, gender, heightft, heightin;
-
     FirebaseDatabase firebaseDatabase;
     DatabaseReference database, personal, id, nameRef, weightRef, ageRef, emailRef, genderRef,
     heightFtRef, heightInRef;
 
+    String personalID = "b1KqcJul0WZOdcXRdaJ2wuKPbLL2";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +37,7 @@ public class ProfilePage extends AppCompatActivity{
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         database = firebaseDatabase.getReference("Users");
-        id = database.child("b1KqcJul0WZOdcXRdaJ2wuKPbLL2"); //Personal user id
+        id = database.child(personalID); //Personal user id
         personal = id.child("Personal Information");
 
         nameRef = personal.child("name");
@@ -56,8 +55,6 @@ public class ProfilePage extends AppCompatActivity{
         gender = findViewById(R.id.genderValue);
         heightft = findViewById(R.id.heightFeetValue);
         heightin = findViewById(R.id.heightInValue);
-
-
 
         getdata(nameRef, name);
         getdataNum(weightRef, weight);
