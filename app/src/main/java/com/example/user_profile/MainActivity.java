@@ -32,24 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private Button breakfastButton;
-    private Button caloricBreakdownButton;
-    private Button goalDisplayButton;
-    private TextView breakfastFatValue;
-    private TextView breakfastCarbsValue;
-    private TextView breakfastProteinValue;
-
-    private TextView lunchFatValue;
-    private TextView lunchCarbsValue;
-    private TextView lunchProteinValue;
-
-    private TextView dinnerFatValue;
-    private TextView dinnerCarbsValue;
-    private TextView dinnerProteinValue;
-
-    private TextView breakfastCaloriesValue;
-    private TextView lunchCaloriesValue;
-    private TextView dinnerCaloriesValue;
+    private Button breakfastButton, caloricBreakdownButton, goalDisplayButton;
+    private TextView breakfastFatValue, breakfastCarbsValue, breakfastProteinValue, lunchFatValue,
+            lunchCarbsValue, lunchProteinValue, dinnerFatValue, dinnerCarbsValue, dinnerProteinValue,
+            breakfastCaloriesValue, lunchCaloriesValue, dinnerCaloriesValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

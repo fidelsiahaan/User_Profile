@@ -39,9 +39,7 @@ public class BarChartActivity extends AppCompatActivity {
         BarDataSet barGoalDataSet = new BarDataSet(barArrayList, "Fats, Carbs, Proteins, consumed vs goals.");
         BarData barData = new BarData(barGoalDataSet);
         barChart.setData(barData);
-        barGoalDataSet.setColors(Color.rgb(255, 255, 255), Color.rgb(0, 0, 255),
-                Color.rgb(255, 255, 255), Color.rgb(0, 0, 255),
-                Color.rgb(255, 255, 255), Color.rgb(0, 0, 255));
+        barGoalDataSet.setColors(Color.rgb(255, 255, 255), Color.rgb(0, 0, 255));
         barGoalDataSet.setValueTextColor(Color.BLACK);
         barGoalDataSet.setValueTextSize(16f);
         barChart.getDescription().setEnabled(false);
