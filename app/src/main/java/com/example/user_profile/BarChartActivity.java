@@ -45,7 +45,10 @@ public class BarChartActivity extends AppCompatActivity {
         barChart.getDescription().setEnabled(false);
         barChart.animateY(1400);
         barChart.getXAxis().setDrawGridLines(false);
-        notif("Too much fat", "s");
+        if(protein_percentage > 20) {
+            notif("You have exceeded your goal fat intake", "Watch out!");
+        }
+        notif("You have exceeded your goal carb intake", "Watch out!");
     }
 
 

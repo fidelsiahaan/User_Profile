@@ -66,12 +66,12 @@ public class ProfilePage extends AppCompatActivity{
 
 
         userSummaryButton = (Button) findViewById(R.id.userSummaryButton);
-    userSummaryButton.setOnClickListener((new View.OnClickListener(){
-        @Override
-        public void onClick(View v){
-            openSummary();
-        }
-    }));
+        userSummaryButton.setOnClickListener((new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openSummary();
+            }
+        }));
     }
 
     private void getdata(DatabaseReference ref, TextView text) {
