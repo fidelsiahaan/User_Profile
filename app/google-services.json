@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "228587521924",
+    "firebase_url": "https://recipe-macronutrition-default-rtdb.firebaseio.com",
+    "project_id": "recipe-macronutrition",
+    "storage_bucket": "recipe-macronutrition.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228587521924:android:326c7710fe6b93726f7fd1",
+        "android_client_info": {
+          "package_name": "com.example.recipemacronutritiontracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228587521924-8sp79jc5lqjv2cmoms61a1faf1ujsqsl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.recipemacronutritiontracker",
+            "certificate_hash": "867edb4042f12502b7fadc803b5f865f52d1049a"
+          }
+        },
+        {
+          "client_id": "228587521924-3n6cp5aeae4g8s6q8m8mghcpdgmtlkht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfY2gnBomYeNkBX0gHyXAXjsTbSOadO8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228587521924-3n6cp5aeae4g8s6q8m8mghcpdgmtlkht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228587521924:android:b336300c0027bc006f7fd1",
+        "android_client_info": {
+          "package_name": "com.example.user_profile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228587521924-3n6cp5aeae4g8s6q8m8mghcpdgmtlkht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfY2gnBomYeNkBX0gHyXAXjsTbSOadO8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228587521924-3n6cp5aeae4g8s6q8m8mghcpdgmtlkht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
