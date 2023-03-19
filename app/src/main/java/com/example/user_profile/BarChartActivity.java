@@ -28,6 +28,8 @@ public class BarChartActivity extends AppCompatActivity {
     float carbs_percentage = (carb_calories/total_calories) * 100;
     float protein_percentage = (protein_calories/total_calories) * 100;
     float fat_percentage = (fat_calories/total_calories) * 100;
+    boolean exceededMacro = false;
+    String message = "You have exceeded the following macros:\n";
 
 
     @Override
@@ -36,6 +38,7 @@ public class BarChartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bar_chart);
         BarChart barChart = findViewById(R.id.barchart);
         getData();
+
         BarDataSet barGoalDataSet = new BarDataSet(barArrayList, "Fats, Carbs, Proteins, consumed vs goals.");
         BarData barData = new BarData(barGoalDataSet);
         barChart.setData(barData);
@@ -45,10 +48,25 @@ public class BarChartActivity extends AppCompatActivity {
         barChart.getDescription().setEnabled(false);
         barChart.animateY(1400);
         barChart.getXAxis().setDrawGridLines(false);
-        if(protein_percentage > 20) {
-            notif("You have exceeded your goal fat intake", "Watch out!");
+
+        if (carbs_percentage > 50) {
+            message += "- Carbs\n";
+            exceededMacro = true;
         }
-        notif("You have exceeded your goal carb intake", "Watch out!");
+        else if (protein_percentage > 20) {
+            message += "- Protein\n";
+            exceededMacro = true;
+        }
+        else if (fat_percentage > 30) {
+            message += "- Fat\n";
+            exceededMacro = true;
+        }
+
+
+// Display warning if any macro exceeds its maximum value
+        if (exceededMacro) {
+            notif(message, "Watch out!");
+        }
     }
 
 

@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class PieChartActivity extends AppCompatActivity {
     private PieChart pieChart;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

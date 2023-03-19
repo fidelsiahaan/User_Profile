@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private Button breakfastButton, caloricBreakdownButton, goalDisplayButton;
+    private Button breakfastButton, caloricBreakdownButton, goalDisplayButton,
+            weightTrackingButton;
     private TextView breakfastFatValue, breakfastCarbsValue, breakfastProteinValue, lunchFatValue,
             lunchCarbsValue, lunchProteinValue, dinnerFatValue, dinnerCarbsValue, dinnerProteinValue,
             breakfastCaloriesValue, lunchCaloriesValue, dinnerCaloriesValue;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         breakfastButton = (Button) findViewById(R.id.breakfast_button);
         caloricBreakdownButton = (Button) findViewById(R.id.caloric_breakdown_button);
         goalDisplayButton = (Button) findViewById(R.id.goal_display_button);
+        weightTrackingButton = (Button) findViewById(R.id.weightTrackingButton);
 
         breakfastFatValue = (TextView) findViewById(R.id.breakfastFatValue);
         breakfastCarbsValue = (TextView) findViewById(R.id.breakfastCarbsValue);
@@ -86,10 +88,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
 
+        weightTrackingButton.setOnClickListener((new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openWeightTrackingActivity();
+            }
+        }));
+
     }
 
     public void openBreakfastActivity(){
         Intent intent = new Intent(this, BreakfastActivity.class);
+        startActivity(intent);
+    }
+    public void openWeightTrackingActivity(){
+        Intent intent = new Intent(this, WeightTrackingActivity.class);
         startActivity(intent);
     }
 
