@@ -46,9 +46,11 @@ public class WeightTrackingActivity extends AppCompatActivity {
 
         weightEntries = new ArrayList<>();
         //example data
-        weightEntries.add(new WeightEntry(75, new Date()));
-        weightEntries.add(new WeightEntry(76, new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000)));
         weightEntries.add(new WeightEntry(74, new Date(System.currentTimeMillis() - 2 * 24 * 60 * 60 * 1000)));
+        weightEntries.add(new WeightEntry(76, new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000)));
+        weightEntries.add(new WeightEntry(75, new Date()));
+
+
 
         // create a list of Entry objects to represent the weight data on the chart
         List<Entry> entries = new ArrayList<>();
@@ -84,12 +86,10 @@ public class WeightTrackingActivity extends AppCompatActivity {
         chart.getXAxis().setAxisMinimum(lineData.getXMin() - 0.10f);
         chart.getAxisRight().setDrawGridLines(false);
         chart.getAxisLeft().setDrawGridLines(false);
-
-        Description description = chart.getDescription();
-        description.setTypeface(font);
+        chart.getDescription().setTypeface(font);
 
         showAddWeightDialog();
-        // redraw the chart
+
         chart.invalidate();
     }
 
@@ -132,7 +132,7 @@ public class WeightTrackingActivity extends AppCompatActivity {
 
         // add a new Entry object to the chart's data set and redraw the chart
         LineDataSet dataSet = (LineDataSet) chart.getData().getDataSetByIndex(0);
-        dataSet.addEntry(new Entry(dataSet.getEntryCount(), entry.getWeight()));
+        dataSet.addEntryOrdered(new Entry(dataSet.getEntryCount(), entry.getWeight()));
         chart.getData().notifyDataChanged();
         chart.notifyDataSetChanged();
         chart.invalidate();

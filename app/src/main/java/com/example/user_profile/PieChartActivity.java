@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -33,6 +34,8 @@ public class PieChartActivity extends AppCompatActivity {
     }
 
     private void setupPieChart() {
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/worksansnormal.ttf");
+
         pieChart.setDrawHoleEnabled(true);
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
@@ -40,6 +43,7 @@ public class PieChartActivity extends AppCompatActivity {
         pieChart.setCenterText("Caloric Breakdown");
         pieChart.setCenterTextSize(24);
         pieChart.getDescription().setEnabled(false);
+        pieChart.getDescription().setTypeface(font);
 
         Legend l = pieChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -47,6 +51,7 @@ public class PieChartActivity extends AppCompatActivity {
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
         l.setDrawInside(false);
         l.setEnabled(true);
+        l.setTypeface(font);
     }
     private void loadPieChartData() {
         ArrayList<PieEntry> entries = new ArrayList<>();

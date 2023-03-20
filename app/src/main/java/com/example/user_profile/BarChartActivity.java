@@ -10,6 +10,9 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 
+import android.graphics.Typeface;
+import com.github.mikephil.charting.components.Description;
+
 import com.github.mikephil.charting.animation.Easing;
 
 import com.github.mikephil.charting.data.BarEntry;
@@ -29,7 +32,7 @@ public class BarChartActivity extends AppCompatActivity {
     float protein_percentage = (protein_calories/total_calories) * 100;
     float fat_percentage = (fat_calories/total_calories) * 100;
     boolean exceededMacro = false;
-    String message = "You have exceeded the following macros:\n";
+    String message = "You have exceeded the following macros today:\n";
 
 
     @Override
@@ -39,12 +42,15 @@ public class BarChartActivity extends AppCompatActivity {
         BarChart barChart = findViewById(R.id.barchart);
         getData();
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/worksansnormal.ttf");
+
         BarDataSet barGoalDataSet = new BarDataSet(barArrayList, "Fats, Carbs, Proteins, consumed vs goals.");
         BarData barData = new BarData(barGoalDataSet);
         barChart.setData(barData);
         barGoalDataSet.setColors(Color.rgb(255, 255, 255), Color.rgb(0, 0, 255));
         barGoalDataSet.setValueTextColor(Color.BLACK);
         barGoalDataSet.setValueTextSize(16f);
+        barGoalDataSet.setValueTypeface(font);
         barChart.getDescription().setEnabled(false);
         barChart.animateY(1400);
         barChart.getXAxis().setDrawGridLines(false);
@@ -68,8 +74,6 @@ public class BarChartActivity extends AppCompatActivity {
             notif(message, "Watch out!");
         }
     }
-
-
 
 
     private void notif(String message, String title) {
