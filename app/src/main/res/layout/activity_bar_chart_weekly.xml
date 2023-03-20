@@ -10,8 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DAILY"
-        android:id="@+id/daily"
+        android:text="WEEKLY"
+        android:id="@+id/weekly"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/barchart"
@@ -24,18 +24,18 @@
         android:layout_width = "match_parent"
         android:layout_height="500dp"
         android:id="@+id/barchart"
-        app:layout_constraintTop_toBottomOf="@+id/daily"
+        app:layout_constraintTop_toBottomOf="@+id/weekly"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/weeklyButton"/>
+        app:layout_constraintBottom_toTopOf="@id/dailyButton"/>
 
     <Button
-        android:id="@+id/weeklyButton"
+        android:id="@+id/dailyButton"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_margin="10dp"
         android:backgroundTint="@android:color/black"
-        android:text="Weekly"
+        android:text="Daily"
         android:layout_weight="1"
         android:textSize="18sp"
         android:fontFamily="@font/worksansnormal"

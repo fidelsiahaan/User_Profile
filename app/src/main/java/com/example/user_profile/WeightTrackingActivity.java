@@ -5,6 +5,12 @@ import static java.security.AccessController.getContext;
 import android.graphics.Color;
 import android.os.Bundle;
 
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.github.mikephil.charting.charts.LineChart;
@@ -25,6 +31,9 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,6 +44,9 @@ public class WeightTrackingActivity extends AppCompatActivity {
 
     private LineChart chart;
     private static List<WeightEntry> weightEntries;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference database, personal, id;
+    String personalID = "b1KqcJul0WZOdcXRdaJ2wuKPbLL2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +100,7 @@ public class WeightTrackingActivity extends AppCompatActivity {
         chart.getAxisLeft().setDrawGridLines(false);
         chart.getDescription().setTypeface(font);
 
+        //update weight
         showAddWeightDialog();
 
         chart.invalidate();
@@ -98,7 +111,7 @@ public class WeightTrackingActivity extends AppCompatActivity {
         weightEditText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
         new AlertDialog.Builder(this)
-                .setTitle("Add Weight Entry")
+                .setTitle("Weight Update")
                 .setMessage("Enter your weight in pounds:")
                 .setView(weightEditText)
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
@@ -128,7 +141,7 @@ public class WeightTrackingActivity extends AppCompatActivity {
     // method to add a new weight entry to the list and update the chart
     private void addWeightEntry(float weight) {
         WeightEntry entry = new WeightEntry(weight, new Date());
-        weightEntries.add(new WeightEntry(weight, new Date()));
+        weightEntries.add(entry);
 
         // add a new Entry object to the chart's data set and redraw the chart
         LineDataSet dataSet = (LineDataSet) chart.getData().getDataSetByIndex(0);
@@ -136,22 +149,24 @@ public class WeightTrackingActivity extends AppCompatActivity {
         chart.getData().notifyDataChanged();
         chart.notifyDataSetChanged();
         chart.invalidate();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        database = firebaseDatabase.getReference("Users");
+        id = database.child(personalID); //Personal user id
+        personal = id.child("Personal Information");
+
     }
 
     // inner class to represent a weight entry with a weight value and a date
     private static class WeightEntry {
         private final float weight;
         private final Date date;
-
         public WeightEntry(float weight, Date date) {
             this.weight = weight;
             this.date = date;
         }
-
         public float getWeight() {
             return weight;
         }
-
         public Date getDate() {
             return date;
         }

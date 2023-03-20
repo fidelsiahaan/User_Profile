@@ -24,32 +24,31 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class BarChartActivity extends AppCompatActivity {
+public class BarChartWeeklyActivity extends AppCompatActivity {
 
     ArrayList barArrayList;
     float carb_calories = 959;
     float fat_calories = 423;
     float protein_calories = 532;
-    float total_calories = 2000;
+    float total_calories = 5000;
     float carbs_percentage = (carb_calories/total_calories) * 100;
     float protein_percentage = (protein_calories/total_calories) * 100;
     float fat_percentage = (fat_calories/total_calories) * 100;
     boolean exceededMacro = false;
     String message = "You have exceeded the following macros today:\n";
 
-    private Button weeklyButton, monthlyButton;
+    private Button dailyButton, monthlyButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bar_chart);
+        setContentView(R.layout.activity_bar_chart_weekly);
         BarChart barChart = findViewById(R.id.barchart);
-
-        weeklyButton = (Button) findViewById(R.id.weeklyButton);
-        monthlyButton = (Button) findViewById(R.id.monthlyButton);
-
         getData();
+
+        dailyButton = (Button) findViewById(R.id.dailyButton);
+        monthlyButton = (Button) findViewById(R.id.monthlyButton);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "font/worksansnormal.ttf");
 
@@ -82,12 +81,10 @@ public class BarChartActivity extends AppCompatActivity {
         if (exceededMacro) {
             notif(message, "Watch out!");
         }
-
-
-        weeklyButton.setOnClickListener(new View.OnClickListener(){
+        dailyButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openWeeklyBarChartActivity();
+                openBarChartActivity();
             }
         });
 
@@ -105,11 +102,11 @@ public class BarChartActivity extends AppCompatActivity {
         myAlert.setTitle(title);
         myAlert.setMessage(message);
         myAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        })
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
                 .create();
         myAlert.show();
     }
@@ -124,15 +121,12 @@ public class BarChartActivity extends AppCompatActivity {
         barArrayList.add(new BarEntry(6f, protein_percentage));
 
     }
-
-
-
-    public void openMonthlyBarChartActivity(){
-        Intent intent = new Intent(this, BarChartMonthlyActivity.class);
+    public void openBarChartActivity(){
+        Intent intent = new Intent(this, BarChartActivity.class);
         startActivity(intent);
     }
-    public void openWeeklyBarChartActivity(){
-        Intent intent = new Intent(this, BarChartWeeklyActivity.class);
+    public void openMonthlyBarChartActivity(){
+        Intent intent = new Intent(this, BarChartMonthlyActivity.class);
         startActivity(intent);
     }
 }

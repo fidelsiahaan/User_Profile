@@ -24,30 +24,30 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class BarChartActivity extends AppCompatActivity {
+public class BarChartMonthlyActivity extends AppCompatActivity {
 
     ArrayList barArrayList;
     float carb_calories = 959;
     float fat_calories = 423;
     float protein_calories = 532;
-    float total_calories = 2000;
+    float total_calories = 30000;
     float carbs_percentage = (carb_calories/total_calories) * 100;
     float protein_percentage = (protein_calories/total_calories) * 100;
     float fat_percentage = (fat_calories/total_calories) * 100;
     boolean exceededMacro = false;
     String message = "You have exceeded the following macros today:\n";
 
-    private Button weeklyButton, monthlyButton;
+    private Button dailyButton, weeklyButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bar_chart);
+        setContentView(R.layout.activity_bar_chart_monthly);
         BarChart barChart = findViewById(R.id.barchart);
 
+        dailyButton = (Button) findViewById(R.id.dailyButton);
         weeklyButton = (Button) findViewById(R.id.weeklyButton);
-        monthlyButton = (Button) findViewById(R.id.monthlyButton);
 
         getData();
 
@@ -84,17 +84,17 @@ public class BarChartActivity extends AppCompatActivity {
         }
 
 
-        weeklyButton.setOnClickListener(new View.OnClickListener(){
+        dailyButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openWeeklyBarChartActivity();
+                openBarChartActivity();
             }
         });
 
-        monthlyButton.setOnClickListener((new View.OnClickListener(){
+        weeklyButton.setOnClickListener((new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMonthlyBarChartActivity();
+                openWeeklyBarChartActivity();
             }
         }));
     }
@@ -105,11 +105,11 @@ public class BarChartActivity extends AppCompatActivity {
         myAlert.setTitle(title);
         myAlert.setMessage(message);
         myAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        })
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
                 .create();
         myAlert.show();
     }
@@ -127,8 +127,8 @@ public class BarChartActivity extends AppCompatActivity {
 
 
 
-    public void openMonthlyBarChartActivity(){
-        Intent intent = new Intent(this, BarChartMonthlyActivity.class);
+    public void openBarChartActivity(){
+        Intent intent = new Intent(this, BarChartActivity.class);
         startActivity(intent);
     }
     public void openWeeklyBarChartActivity(){
