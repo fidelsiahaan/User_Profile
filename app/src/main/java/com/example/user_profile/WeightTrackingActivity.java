@@ -11,6 +11,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.github.mikephil.charting.charts.LineChart;
@@ -26,6 +28,9 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.formatter.ValueFormatter;
@@ -45,7 +50,7 @@ public class WeightTrackingActivity extends AppCompatActivity {
     private LineChart chart;
     private static List<WeightEntry> weightEntries;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference database, personal, id;
+    DatabaseReference database, personal, id, weightRef, dateRef;
     String personalID = "b1KqcJul0WZOdcXRdaJ2wuKPbLL2";
 
     @Override
@@ -58,9 +63,10 @@ public class WeightTrackingActivity extends AppCompatActivity {
 
         weightEntries = new ArrayList<>();
         //example data
-        weightEntries.add(new WeightEntry(74, new Date(System.currentTimeMillis() - 2 * 24 * 60 * 60 * 1000)));
-        weightEntries.add(new WeightEntry(76, new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000)));
-        weightEntries.add(new WeightEntry(75, new Date()));
+
+        weightEntries.add(new WeightEntry(474, new Date(System.currentTimeMillis() - 2 * 24 * 60 * 60 * 1000)));
+        weightEntries.add(new WeightEntry(476, new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000)));
+        weightEntries.add(new WeightEntry(475, new Date()));
 
 
 
@@ -153,7 +159,23 @@ public class WeightTrackingActivity extends AppCompatActivity {
         database = firebaseDatabase.getReference("Users");
         id = database.child(personalID); //Personal user id
         personal = id.child("Personal Information");
+        weightRef = personal.child("weight");
 
+    }
+
+    private void getData(DatabaseReference ref) {
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int value = snapshot.getValue(int.class);
+                    long date = snapshot.child("date").getValue(long.class);
+                    weightEntries.add(new WeightEntry(value, new Date(date)));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(WeightTrackingActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // inner class to represent a weight entry with a weight value and a date

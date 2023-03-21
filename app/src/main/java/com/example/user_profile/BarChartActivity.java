@@ -6,15 +6,12 @@ import android.content.DialogInterface;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.interfaces.datasets.IDataSet;
+import android.widget.TextView;
+import android.widget.ProgressBar;
+
+
 
 import android.graphics.Typeface;
-import com.github.mikephil.charting.components.Description;
-
-import com.github.mikephil.charting.animation.Easing;
 
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
@@ -38,41 +35,50 @@ public class BarChartActivity extends AppCompatActivity {
     String message = "You have exceeded the following macros today:\n";
 
     private Button weeklyButton, monthlyButton;
+    private int calorieIntake = 900, calorieGoal = 2000,
+            proteinIntake, proteinGoal,
+            carbsIntake, carbsGoal,
+            fatIntake, fatGoal;
+    private TextView calorieIntakeT, calorieGoalT;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar_chart);
-        BarChart barChart = findViewById(R.id.barchart);
 
-        weeklyButton = (Button) findViewById(R.id.weeklyButton);
-        monthlyButton = (Button) findViewById(R.id.monthlyButton);
-
-        getData();
+        //weeklyButton = (Button) findViewById(R.id.weeklyButton);
+        //monthlyButton = (Button) findViewById(R.id.monthlyButton);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "font/worksansnormal.ttf");
 
-        BarDataSet barGoalDataSet = new BarDataSet(barArrayList, "Fats, Carbs, Proteins, consumed vs goals.");
-        BarData barData = new BarData(barGoalDataSet);
-        barChart.setData(barData);
-        barGoalDataSet.setColors(Color.rgb(255, 255, 255), Color.rgb(0, 0, 255));
-        barGoalDataSet.setValueTextColor(Color.BLACK);
-        barGoalDataSet.setValueTextSize(16f);
-        barGoalDataSet.setValueTypeface(font);
-        barChart.getDescription().setEnabled(false);
-        barChart.animateY(1400);
-        barChart.getXAxis().setDrawGridLines(false);
 
-        if (carbs_percentage > 50) {
-            message += "- Carbs\n";
+        //TestBench Values
+        calorieIntakeT = findViewById(R.id.totalDailyCaloriesIntake);
+        calorieIntakeT.setText(String.valueOf(calorieIntake));
+
+        calorieGoalT = findViewById(R.id.totalDailyCaloriesGoal);
+        calorieGoalT.setText(String.valueOf(calorieGoal));
+
+        ProgressBar simpleProgressBar=(ProgressBar)findViewById(R.id.calorieBar); // initiate the progress bar
+        simpleProgressBar.setMax(calorieGoal); // 100 maximum value for the progress value
+        simpleProgressBar.setProgress(calorieIntake); // 50 default progress value for the progress bar
+
+
+
+
+        if (calorieGoal > calorieIntake) {
+            message += "- Calories\n";
             exceededMacro = true;
-        }
-        else if (protein_percentage > 20) {
+        } else if (proteinIntake > proteinGoal) {
             message += "- Protein\n";
             exceededMacro = true;
-        }
-        else if (fat_percentage > 30) {
+        } else if (carbsIntake > carbsGoal) {
+            message += "- Carbs\n";
+            exceededMacro = true;
+        } else if (fatIntake > fatGoal) {
             message += "- Fat\n";
             exceededMacro = true;
         }
@@ -82,8 +88,22 @@ public class BarChartActivity extends AppCompatActivity {
         if (exceededMacro) {
             notif(message, "Watch out!");
         }
+    }
+    private void notif(String message, String title) {
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+        myAlert.setTitle(title);
+        myAlert.setMessage(message);
+        myAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        myAlert.show();
+    }
 
-
+/*
         weeklyButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -100,32 +120,6 @@ public class BarChartActivity extends AppCompatActivity {
     }
 
 
-    private void notif(String message, String title) {
-        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
-        myAlert.setTitle(title);
-        myAlert.setMessage(message);
-        myAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        })
-                .create();
-        myAlert.show();
-    }
-
-    private void getData(){
-        barArrayList = new ArrayList();
-        barArrayList.add(new BarEntry(2f, 50));
-        barArrayList.add(new BarEntry(2f, carbs_percentage));
-        barArrayList.add(new BarEntry(4f, 30));
-        barArrayList.add(new BarEntry(4f, fat_percentage));
-        barArrayList.add(new BarEntry(6f, 20));
-        barArrayList.add(new BarEntry(6f, protein_percentage));
-
-    }
-
-
 
     public void openMonthlyBarChartActivity(){
         Intent intent = new Intent(this, BarChartMonthlyActivity.class);
@@ -135,4 +129,6 @@ public class BarChartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, BarChartWeeklyActivity.class);
         startActivity(intent);
     }
+
+ */
 }
