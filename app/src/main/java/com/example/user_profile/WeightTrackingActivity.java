@@ -28,7 +28,6 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.data.Entry;
@@ -45,7 +44,6 @@ import java.util.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public class WeightTrackingActivity extends AppCompatActivity {
 
@@ -56,8 +54,8 @@ public class WeightTrackingActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference database = firebaseDatabase.getReference("Users"),
             id = database.child(personalID),
-            progress = id.child("Progress"),
-            dateRef;
+            progress = id.child("Progress");
+
 
 
     @Override
@@ -71,55 +69,78 @@ public class WeightTrackingActivity extends AppCompatActivity {
         weightEntries = new ArrayList<>();
         //example data
 
-        weightEntries.add(new WeightEntry(474, LocalDate.of(2023, 02, 22)));
-        weightEntries.add(new WeightEntry(476, LocalDate.of(2023, 03, 22)));
-        weightEntries.add(new WeightEntry(475, LocalDate.now() ));
-
-        getData(dateRef);
-
-
-
-        // create a list of Entry objects to represent the weight data on the chart
-        List<Entry> entries = new ArrayList<>();
-        for (int i = 0; i < weightEntries.size(); i++) {
-            WeightEntry entry = weightEntries.get(i);
-            entries.add(new Entry(i, entry.getWeight()));
-        }
-
-        //font
-        Typeface font = Typeface.createFromAsset(getAssets(), "font/worksansnormal.ttf");
-
-
-        // create a data set from the Entry objects and customize the appearance
-        LineDataSet dataSet = new LineDataSet(entries, "Weight (kg)");
-        dataSet.setDrawFilled(true);
-        dataSet.setColor(Color.rgb(0, 255, 0));
-        dataSet.setFillColor(Color.rgb(0, 255, 0));
-        dataSet.setDrawCircles(false);
-        dataSet.setValueTextSize(30f);
-        dataSet.setValueTypeface(font);
-
-        // create a LineData object and add the data set to it
-        LineData lineData = new LineData(dataSet);
-
-        // customize the appearance of the chart
-        chart.setData(lineData);
-        chart.getDescription().setEnabled(false);
-        chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        chart.getXAxis().setValueFormatter(new DateAxisValueFormatter());
-        chart.getAxisLeft().setGranularity(0.01f);
-        chart.getAxisLeft().setEnabled(false);
-        chart.getAxisRight().setEnabled(false);
-        chart.getXAxis().setAxisMinimum(lineData.getXMin() - 0.10f);
-        chart.getAxisRight().setDrawGridLines(false);
-        chart.getAxisLeft().setDrawGridLines(false);
-        chart.getDescription().setTypeface(font);
-
-        //update weight
         showAddWeightDialog();
 
-        chart.invalidate();
+        progress.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                weightEntries.clear();
+                for (DataSnapshot weightSnapshot: snapshot.getChildren()) {
+
+
+                    Long weight = weightSnapshot.getValue(Long.class);
+                    String date = weightSnapshot.getKey();
+
+
+                    weightEntries.add(new WeightEntry(weight, LocalDate.parse(date)));
+
+                            /*
+                            int value = snapshot.child("").getValue(int.class);
+                            LocalDate date;//snapshot.getValue(LocalDate.class);
+                            weightEntries.add(new WeightEntry(value, date));
+                            */
+                }
+                // Make Chart
+                List<Entry> entries = new ArrayList<>();
+
+                for (int i = 0; i < weightEntries.size(); i++) {
+                    WeightEntry entry = weightEntries.get(i);
+                    entries.add(new Entry(i, entry.getWeight()));
+
+                }
+
+
+                // create a data set from the Entry objects and customize the appearance
+                LineDataSet dataSet = new LineDataSet(entries, "Weight (kg)");
+                dataSet.setDrawFilled(true);
+                dataSet.setColor(Color.rgb(0, 255, 0));
+                dataSet.setFillColor(Color.rgb(0, 255, 0));
+                dataSet.setDrawCircles(false);
+                dataSet.setValueTextSize(30f);
+
+                //font
+                Typeface font = Typeface.createFromAsset(getAssets(), "font/worksansnormal.ttf");
+                dataSet.setValueTypeface(font);
+
+                // create a LineData object and add the data set to it
+                LineData lineData = new LineData(dataSet);
+
+                // customize the appearance of the chart
+                chart.setData(lineData);
+                chart.getDescription().setEnabled(false);
+                chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+                chart.getXAxis().setValueFormatter(new DateAxisValueFormatter());
+                chart.getAxisLeft().setGranularity(0.01f);
+                chart.getAxisLeft().setEnabled(false);
+                chart.getAxisRight().setEnabled(false);
+                chart.getXAxis().setAxisMinimum(lineData.getXMin() - 0.10f);
+                chart.getAxisRight().setDrawGridLines(false);
+                chart.getAxisLeft().setDrawGridLines(false);
+                chart.getDescription().setTypeface(font);
+                chart.invalidate();
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(WeightTrackingActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+
     }
+
+
 
     private void showAddWeightDialog() {
         final EditText weightEditText = new EditText(this);
@@ -153,6 +174,10 @@ public class WeightTrackingActivity extends AppCompatActivity {
         }
     }
 
+
+
+
+
     // method to add a new weight entry to the list and update the chart
     private void addWeightEntry(float weight) {
         WeightEntry entry = new WeightEntry(weight, LocalDate.now());
@@ -166,23 +191,10 @@ public class WeightTrackingActivity extends AppCompatActivity {
         chart.invalidate();
 
         progress.child(entry.getDate().toString()).setValue(entry.getWeight());
-
     }
 
-    private void getData(DatabaseReference ref) {
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    int value = 1;//snapshot.child("").getValue(int.class);
-                    LocalDate date;//snapshot.getValue(LocalDate.class);
-                    weightEntries.add(new WeightEntry(value, date));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(WeightTrackingActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+
+
 
     // inner class to represent a weight entry with a weight value and a date
     private static class WeightEntry {
