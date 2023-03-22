@@ -42,16 +42,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class WeightTrackingActivity extends AppCompatActivity {
 
     private LineChart chart;
     private static List<WeightEntry> weightEntries;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference database, personal, id, weightRef, dateRef;
-    String personalID = "b1KqcJul0WZOdcXRdaJ2wuKPbLL2";
+
+    String personalID = "wALv53lrVEP0cN9KQSaVHBG6GDw1";
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference database = firebaseDatabase.getReference("Users"),
+            id = database.child(personalID),
+            progress = id.child("Progress"),
+            dateRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +71,11 @@ public class WeightTrackingActivity extends AppCompatActivity {
         weightEntries = new ArrayList<>();
         //example data
 
-        weightEntries.add(new WeightEntry(474, new Date(System.currentTimeMillis() - 2 * 24 * 60 * 60 * 1000)));
-        weightEntries.add(new WeightEntry(476, new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000)));
-        weightEntries.add(new WeightEntry(475, new Date()));
+        weightEntries.add(new WeightEntry(474, LocalDate.of(2023, 02, 22)));
+        weightEntries.add(new WeightEntry(476, LocalDate.of(2023, 03, 22)));
+        weightEntries.add(new WeightEntry(475, LocalDate.now() ));
+
+        getData(dateRef);
 
 
 
@@ -135,18 +144,18 @@ public class WeightTrackingActivity extends AppCompatActivity {
 
     // custom ValueFormatter class to format the X-axis labels as dates
     private static class DateAxisValueFormatter extends ValueFormatter {
-        private final SimpleDateFormat mDateFormat = new SimpleDateFormat("MMM dd", Locale.US);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("LLL dd");
 
         @Override
         public String getAxisLabel(float value, AxisBase axis) {
-            Date date = weightEntries.get((int) value).getDate();
-            return mDateFormat.format(date);
+            LocalDate date = weightEntries.get((int) value).getDate();
+            return date.format(formatter);
         }
     }
 
     // method to add a new weight entry to the list and update the chart
     private void addWeightEntry(float weight) {
-        WeightEntry entry = new WeightEntry(weight, new Date());
+        WeightEntry entry = new WeightEntry(weight, LocalDate.now());
         weightEntries.add(entry);
 
         // add a new Entry object to the chart's data set and redraw the chart
@@ -155,11 +164,8 @@ public class WeightTrackingActivity extends AppCompatActivity {
         chart.getData().notifyDataChanged();
         chart.notifyDataSetChanged();
         chart.invalidate();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        database = firebaseDatabase.getReference("Users");
-        id = database.child(personalID); //Personal user id
-        personal = id.child("Personal Information");
-        weightRef = personal.child("weight");
+
+        progress.child(entry.getDate().toString()).setValue(entry.getWeight());
 
     }
 
@@ -167,9 +173,9 @@ public class WeightTrackingActivity extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    int value = snapshot.getValue(int.class);
-                    long date = snapshot.child("date").getValue(long.class);
-                    weightEntries.add(new WeightEntry(value, new Date(date)));
+                    int value = 1;//snapshot.child("").getValue(int.class);
+                    LocalDate date;//snapshot.getValue(LocalDate.class);
+                    weightEntries.add(new WeightEntry(value, date));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -181,15 +187,15 @@ public class WeightTrackingActivity extends AppCompatActivity {
     // inner class to represent a weight entry with a weight value and a date
     private static class WeightEntry {
         private final float weight;
-        private final Date date;
-        public WeightEntry(float weight, Date date) {
+        private final LocalDate date;
+        public WeightEntry(float weight, LocalDate date) {
             this.weight = weight;
             this.date = date;
         }
         public float getWeight() {
             return weight;
         }
-        public Date getDate() {
+        public LocalDate getDate() {
             return date;
         }
     }
